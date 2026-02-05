@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: cloudretail_db
+    environment:
+      POSTGRES_USER: cloudretail
+      POSTGRES_PASSWORD: cloudretail
+      POSTGRES_DB: cloudretail
+    ports:
+      - "5433:5432"
+    volumes:
+      - cloudretail_pg:/var/lib/postgresql/data
+
+volumes:
+  cloudretail_pg:
