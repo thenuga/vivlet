@@ -1,65 +1,81 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+export default function LandingPage() {
+  const router = useRouter();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="relative min-h-screen overflow-hidden">
+      {/* Background image */}
+      <Image
+        src="/logo/background.jpg"
+        alt="Velino background"
+        fill
+        priority
+        className="object-cover scale-105 blur-sm"
+      />
+
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/45" />
+
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-6 py-14">
+        <div className="w-full max-w-2xl">
+          <div className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl p-8 sm:p-10 text-center">
+            {/* Logo */}
+            <div className="flex justify-center">
+              <div className="rounded-2xl bg-white/70 backdrop-blur p-4 shadow-lg ring-1 ring-white/40">
+                <Image
+                  src="/logo/velino.png"
+                  alt="Velino"
+                  width={120}
+                  height={120}
+                  priority
+                  className="h-auto w-[120px] sm:w-[140px]"
+                />
+              </div>
+            </div>
+
+            {/* Text */}
+            <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+              Velino
+            </h1>
+
+            <p className="mt-3 text-white/80 text-base sm:text-lg">
+              Smart. Simple. Stylish shopping.
+            </p>
+
+            <p className="mt-4 text-white/70 text-sm sm:text-base leading-relaxed">
+              Discover trending products, seamless checkout, and fast order tracking —
+              all in one place.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => router.push("/products")}
+                className="rounded-xl bg-orange-600 px-8 py-3 text-white font-semibold hover:bg-orange-700 transition shadow-lg shadow-orange-600/25"
+              >
+                Let’s Shop →
+              </button>
+
+              <button
+                onClick={() => router.push("/products")}
+                className="rounded-xl border border-white/30 bg-white/10 px-8 py-3 text-white font-semibold hover:bg-white/15 transition"
+              >
+                Browse Products
+              </button>
+            </div>
+
+            {/* Small footer text */}
+            <div className="mt-8 text-xs text-white/55">
+              © {new Date().getFullYear()} Velino — MVP Storefront
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
