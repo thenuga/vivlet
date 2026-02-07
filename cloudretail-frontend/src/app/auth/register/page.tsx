@@ -21,8 +21,7 @@ export default function RegisterPage() {
     setErr(null);
     setLoading(true);
     try {
-      await register({ name, email, password, role: "USER" });
-      router.replace(nextUrl);
+     await register(name, email, password, "USER");
     } catch (e: any) {
       setErr(e?.message || "Register failed");
     } finally {
