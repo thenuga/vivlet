@@ -14,6 +14,7 @@ export type Product = {
   createdAt?: string;
   updatedAt?: string;
 };
+export type CatalogProduct = Product;
 
 function normalizeProducts(data: any): Product[] {
   if (Array.isArray(data)) return data as Product[];
