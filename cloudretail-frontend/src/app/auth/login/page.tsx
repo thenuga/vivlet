@@ -1,14 +1,19 @@
-export const dynamic = "force-dynamic";
-
 "use client";
 
 import { Suspense } from "react";
-import LoginClient from "./LoginClient";
+import { useSearchParams } from "next/navigation";
 
-export default function Page() {
+function LoginInner() {
+  const params = useSearchParams();
+  const next = params.get("next");
+
+  return <LoginForm next={next} />;
+}
+
+export default function LoginPage() {
   return (
-    <Suspense fallback={null}>
-      <LoginClient />
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginInner />
     </Suspense>
   );
 }
