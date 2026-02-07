@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "prisma": "prisma",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@prisma/client": "6.19.2",
